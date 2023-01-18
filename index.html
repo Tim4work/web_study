@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        body {
+            background: black;
+            height: 6000px;
+            font-family: 'nanumsquare';
+        }
+        div {
+            margin-top: 1000px;
+            color: white;
+            text-align: center;
+            opacity: 0;
+            transition: all 1.0s;
+            transform: rotate(720deg);
+        }
+    </style>
+
+    <div><h1>iPhone 14 출시</h1></div>
+    <div><h1>카메라가 3개</h1></div>
+    <div><h1>화질 죽여줍니다</h1></div>
+    <div><img src="image.jpg" width="70%"></div>
+
+    <script>
+        let observer = new IntersectionObserver((e)=>{
+            e.forEach((박스)=>{
+                if (박스.isIntersecting){
+                    박스.target.style.opacity = 1;
+                    박스.target.style.transform = 'rotate(0deg)';
+                }
+                else{
+                    박스.target.style.opacity = 0;
+                    박스.target.style.transform = 'rotate(720deg)';
+                }
+                }
+            )
+        })
+
+        let div = document.querySelectorAll('div')
+        observer.observe(div[0])
+        observer.observe(div[1])
+        observer.observe(div[2])
+        observer.observe(div[3])
+    </script>
+
+</body>
+</html>
